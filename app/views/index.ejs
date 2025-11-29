@@ -1,0 +1,73 @@
+<%- include('layouts/header') %>
+
+<!-- Main hero: text on the left, big inspo image on the right -->
+<div class="container hero-section">
+  <div class="row align-items-center">
+    <!-- LEFT: copy -->
+    <div class="col-lg-6 hero-copy">
+      <p class="hero-kicker">Curated, not impulsive</p>
+      <h1 class="hero-title">Build a wardrobe<br>that actually feels like you.</h1>
+
+      <p class="hero-subtitle">
+        MyStyle Planner is my personal shopping planner web app. Instead of random
+        “I’ll buy it later” screenshots, I keep everything here – items, prices,
+        stores, and how badly I actually want them.
+      </p>
+
+      <div class="mt-4 d-flex gap-3">
+        <!-- If I’m signed in, this takes me straight to my items list. -->
+        <a href="/items" class="btn btn-primary-mystyle">Open my planner</a>
+        <!-- New users start here. -->
+        <a href="/signup" class="btn btn-outline-mystyle">Create an account</a>
+      </div>
+    </div>
+
+    <!-- My main image -->
+    <div class="col-lg-6 hero-image-wrapper">
+      <div class="hero-image-bg"></div>
+      <!-- adding my main image -->
+      <img
+        src="/images/moodboard1.png"
+        alt="Outfit planning moodboard"
+        class="hero-main-img"
+      >
+    </div>
+  </div>
+</div>
+
+<!-- Bottom red strip with a smaller photo/video + caption -->
+<section class="hero-bottom-strip">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <!-- LEFT: text explaining what this panel is -->
+      <div class="col-lg-5 hero-bottom-text">
+        <p class="section-title text-uppercase mb-2">Current moodboard</p>
+        <h2 class="section-heading mb-3">My Style Planner</h2>
+        <p class="mb-0">
+          This planner is where I collect the items that fit the style I’m trying to build.
+          Instead of screenshots everywhere, everything I’m interested in lives here.
+          Helps me stay intentional with what I buy instead of buying just because “it’s cute.”
+          A way to track purchases, wishlist items, and pieces I actually want to invest in.
+        </p>
+      </div>
+
+      <!-- RIGHT: media card (photo or video) -->
+      <div class="col-lg-7">
+        <div class="hero-bottom-media">
+          <!-- Option 1: image -->
+          <img
+            src="/images/Bottom.png"
+            alt="Smaller inspo collage"
+          >
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('layouts/footer') %>
+
+<!--ends-->
+

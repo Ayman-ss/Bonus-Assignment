@@ -1,0 +1,24 @@
+<%- include('../layouts/header') %>
+
+<section class="section">
+  <div class="container">
+    <!-- Using the same auth-card layout so the delete confirmation page looks consistent with the rest of my forms -->
+    <div class="auth-card text-center">
+        <!-- Heading for the delete confirmation -->
+      <h1 class="section-heading mb-3">Delete item</h1>
+      <!-- This text shows the item name dynamically, so the user knows exactly what they're deleting -->
+      <p>Are you sure you want to delete <strong><%= item.name %></strong> from your planner?</p>
+
+       <!-- This form sends a POST request to my delete route. I’m using POST instead of GET because deleting data shouldn't be done through a clickable link. -->
+      <form method="post" action="/items/<%= item._id %>/delete" class="d-inline">
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <!-- Cancel button just takes the user back to the item list instead of deleting anything -->
+      </form>
+      <a href="/items" class="btn btn-outline-mystyle ms-2">Cancel</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../layouts/footer') %>
+
+<!--ends-->

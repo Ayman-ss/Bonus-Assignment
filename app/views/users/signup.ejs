@@ -1,0 +1,59 @@
+<%- include('../layouts/header') %>
+
+<section class="section">
+  <div class="container">
+    <!--  Using the same centered card layout as the sign-in page. This keeps all my authentication screens consistent and clean.-->
+    <div class="auth-card">
+      <h1 class="section-heading mb-3">Create your account</h1>
+      <p class="mb-4">
+        Please provide your information below
+      </p>
+
+       <!--  Signup form — this sends a POST request to /signup.The signup route will: validate the fields,check if username exists ,add the user to MongoDB ,start a session -->
+      <form method="post" action="/signup">
+         <!-- First name -->
+        <div class="mb-3">
+          <label class="form-label">First name</label>
+          <input class="form-control" type="text" name="firstName" required>
+        </div>
+
+        <!--Last name-->
+        <div class="mb-3">
+          <label class="form-label">Last name</label>
+          <input class="form-control" type="text" name="lastName" required>
+        </div>
+
+        <!-- Email field -->
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input class="form-control" type="email" name="email" required>
+        </div>
+
+        <!-- Username that the user will sign in with -->
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input class="form-control" type="text" name="username" required>
+        </div>
+
+        <!-- Password input -->
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input class="form-control" type="password" name="password" required>
+        </div>
+
+        <!-- Submit button to create the user -->
+        <button type="submit" class="btn btn-primary-mystyle w-100 mt-2">Create account</button>
+      </form>
+
+      <p class="mt-3 mb-0 text-center">
+        Already have an account?
+        <a href="/signin">Sign in here</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<%- include('../layouts/footer') %>
+
+
+<!--ends-->

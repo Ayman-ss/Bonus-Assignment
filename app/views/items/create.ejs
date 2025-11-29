@@ -1,0 +1,64 @@
+<%- include('../layouts/header') %>
+
+<section class="section">
+  <div class="container">
+    <!-- This card is the centered form layout I’m using everywhere Keeps the "Add item" form looking clean and consistent. -->
+    <div class="auth-card">
+        <!-- Page heading so users know they're adding a new item to their planner -->
+      <h1 class="section-heading mb-3">Add new item</h1>
+
+      <form method="post" action="/items/create">
+        <div class="mb-3">
+          <label class="form-label">Item name</label>
+          <input class="form-control" type="text" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <!-- Optional store name (where I plan to buy it) -->
+          <label class="form-label">Store</label>
+          <input class="form-control" type="text" name="store">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Category</label>
+          <input class="form-control" type="text" name="category">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Price</label>
+          <input class="form-control" type="number" step="0.01" name="price">
+        </div>
+
+        <!-- Dropdown for how badly I want the item (Low/Medium/High). Medium is default since that feels neutral. -->
+        <div class="mb-3">
+          <label class="form-label">Priority</label>
+          <select class="form-select" name="priority">
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <!-- Status helps me track if something is just on my wishlist or if I already bought it. -->
+        <div class="mb-3">
+          <label class="form-label">Status</label>
+          <select class="form-select" name="status">
+            <option value="Wishlist" selected>Wishlist</option>
+            <option value="Purchased">Purchased</option>
+          </select>
+        </div>
+
+        <!-- Notes section for extra details (size, colour, why I want it, etc.) -->
+        <div class="mb-3">
+          <label class="form-label">Notes</label>
+          <textarea class="form-control" name="notes" rows="3"></textarea>
+        </div>
+
+        <!-- Submit button to save everything into MongoDB -->
+        <button type="submit" class="btn btn-primary-mystyle w-100 mt-2">Save item</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include('../layouts/footer') %>
