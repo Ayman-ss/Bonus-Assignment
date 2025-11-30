@@ -3,11 +3,15 @@
 const mongoose = require('mongoose');
 const config = require('./config'); // picks up db + sessionSecret
 
+console.log("DB_URI =", process.env.DB_URI);
+
 module.exports = function () {
-  const db = mongoose.connect(config.db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  mongoose.connect(process.env.DB_URI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => {
+    console.error("MongoDB Connection ERROR:", err);
   });
+
 
   mongoose.connection.on('connected', () => {
     console.log('✓ Connected to MongoDB');
