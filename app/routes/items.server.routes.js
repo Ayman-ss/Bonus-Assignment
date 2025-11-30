@@ -4,20 +4,30 @@ const express = require('express');
 const router = express.Router();
 const itemsController = require('../controllers/items.server.controller');
 
-// List all items
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated && req.isAuthenticated()) {
+    return next();
+  }
+
+  
+  // not logged in → can’t change data
+  res.redirect('/signin');
+}
+
+// Everyone can SEE items
 router.get('/items', itemsController.list);
 
-// Create item
-router.get('/items/create', itemsController.showCreateForm);
-router.post('/items/create', itemsController.create);
+// Only logged-in users can CREATE
+router.get('/items/create', ensureAuthenticated, itemsController.showCreate);
+router.post('/items/create', ensureAuthenticated, itemsController.create);
 
-// Edit item
-router.get('/items/:id/edit', itemsController.showEditForm);
-router.post('/items/:id/edit', itemsController.update);
+// Only logged-in users can EDIT
+router.get('/items/:id/edit', ensureAuthenticated, itemsController.showEdit);
+router.post('/items/:id/edit', ensureAuthenticated, itemsController.update);
 
-// Delete item
-router.get('/items/:id/delete', itemsController.showDeleteConfirm);
-router.post('/items/:id/delete', itemsController.delete);
+// Only logged-in users can DELETE
+router.get('/items/:id/delete', ensureAuthenticated, itemsController.showDelete);
+router.post('/items/:id/delete', ensureAuthenticated, itemsController.delete);
 
 module.exports = router;
 

@@ -7,6 +7,11 @@
         <!-- Page heading so users know they're adding a new item to their planner -->
       <h1 class="section-heading mb-3">Add new item</h1>
 
+
+    <% if (!user) { %>
+      <p class="text-danger">You must log in to create items.</p>
+    <% } %>
+
       <form method="post" action="/items/create">
         <div class="mb-3">
           <label class="form-label">Item name</label>

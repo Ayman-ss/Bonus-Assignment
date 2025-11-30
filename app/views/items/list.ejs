@@ -8,7 +8,12 @@
         <h1 class="section-heading mb-0">All items</h1>
       </div>
       <!-- Takes user to the create page -->
-      <a href="/items/create" class="btn btn-primary-mystyle">Add new item</a>
+        <% if (user) { %>
+          <a href="/items/create" class="btn btn-primary-mystyle">Add new item</a>
+        <% } else { %>
+          <p class="text-muted small">Log in to add items</p>
+        <% } %>
+
     </div>
 
     <div class="row gy-4">
@@ -42,9 +47,16 @@
               </div>
 
               <div class="card-footer text-end">
-                <a href="/items/<%= item._id %>/edit" class="btn btn-sm btn-outline-mystyle me-2">Edit</a>
-                <a href="/items/<%= item._id %>/delete" class="btn btn-sm btn-outline-danger">Delete</a>
+
+                <% if (user) { %>
+                  <a href="/items/<%= item._id %>/edit" class="btn btn-sm btn-outline-mystyle me-2">Edit</a>
+                  <a href="/items/<%= item._id %>/delete" class="btn btn-sm btn-outline-danger">Delete</a>
+                <% } else { %>
+                  <p class="text-muted small">Log in to edit or delete</p>
+                <% } %>
+
               </div>
+
             </div>
           </div>
 

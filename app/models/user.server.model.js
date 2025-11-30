@@ -1,5 +1,6 @@
 // user model for signup / signin
 
+
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -8,6 +9,8 @@ const UserSchema = new mongoose.Schema({
   email:     { type: String, trim: true, required: true },
   username:  { type: String, trim: true, required: true, unique: true },
   password:  { type: String, required: true }, 
+  googleId: { type: String },
+  githubId: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 

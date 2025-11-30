@@ -9,6 +9,11 @@ const session = require('express-session');
 const path = require('path');
 const config = require('./config');
 
+const passport = require('passport');
+require('./passport.js');
+
+
+
 module.exports = function () {
   const app = express();
 
@@ -31,9 +36,19 @@ module.exports = function () {
     session({
       saveUninitialized: true,
       resave: false,
-      secret: config.sessionSecret
+      secret: process.env.SESSION_SECRET
+
     })
   );
+
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  // Make the logged-in user available in all EJS views as `user`
+  app.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+  });
 
   // Make session available to all EJS templates as "session"
   app.use((req, res, next) => {

@@ -1,18 +1,55 @@
 // server.js
-// Entry point for my MyStyle Planner app
-require('dotenv').config(); // Load variables from .env into process.env
 
-const express = require('./config/express');
-const mongoose = require('./config/mongoose');
+require('dotenv').config();
 
-// Connect to MongoDB first
+const mongoose = require('./config/mongoose'); 
+const createExpress = require('./config/express');
+
+// connect to MongoDB
 mongoose();
 
-// Create the Express app
-const app = express();
+// build express app
+const app = createExpress();
 
-// Start the server
+// start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`MyStyle Planner is running on port ${PORT}`);
+  console.log(`MyStyle Planner running on port ${PORT}`);
 });
+
+/*require('dotenv').config();
+const mongoose = require('./config/mongoose');
+
+
+const createExpress = require('./express');
+const passport = require('./passport');
+const session = require('express-session');
+
+// Connect to DB
+mongoose();
+
+// Create express app
+const app = createExpress();
+
+// Sessions
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Pass user to all EJS views
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+*/

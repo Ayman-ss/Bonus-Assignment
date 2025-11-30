@@ -7,7 +7,15 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true
+    
   },
+
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  
   store: {
     type: String,
     trim: true
