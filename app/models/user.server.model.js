@@ -4,15 +4,19 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  firstName: { type: String, trim: true, required: true },
-  lastName:  { type: String, trim: true, required: true },
-  email:     { type: String, trim: true, required: true },
-  username:  { type: String, trim: true, required: true, unique: true },
-  password:  { type: String, required: true }, 
+  firstName: { type: String },
+  lastName: { type: String },
+  username: { type: String },
+  password: { type: String },
+
+  // For OAuth
   googleId: { type: String },
   githubId: { type: String },
-  createdAt: { type: Date, default: Date.now }
+
+  displayName: { type: String },
+  email: { type: String },
 });
+
 
 module.exports = mongoose.model('User', UserSchema);
 
